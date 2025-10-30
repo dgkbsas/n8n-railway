@@ -1,0 +1,28 @@
+# N8N data (no subir datos locales)
+.n8n/
+*.db
+*.sqlite
+
+# Environment variables
+.env
+.env.local
+
+# Node modules (si usas npm localmente)
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Railway
+.railway/
