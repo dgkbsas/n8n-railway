@@ -1,7 +1,12 @@
 FROM n8nio/n8n:latest
 
-# Requerido para permitir persistencia en Railway
-ENV N8N_QUEUE_MODE=regular
-ENV N8N_DISABLE_PRODUCTION_MAIN_PROCESS=true
+# Configuración para Railway
+ENV NODE_ENV=production
+ENV N8N_PORT=8080
+ENV WEBHOOK_URL=https://$RAILWAY_PUBLIC_DOMAIN
 
-CMD ["n8n", "start"]
+# Exponer puerto
+EXPOSE 8080
+
+# Comando de inicio
+CMD ["n8n"]
