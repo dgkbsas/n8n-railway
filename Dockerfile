@@ -1,17 +1,13 @@
 FROM n8nio/n8n:latest
 
-# Variables de entorno
-ENV NODE_ENV=production
+# Crear la carpeta donde n8n guardará SQLite, credenciales y flujos
+RUN mkdir -p /home/node/.n8n
 
-# Usuario n8n
-USER node
+# Establecer directorio de trabajo
+WORKDIR /home/node/.n8n
 
-# Exponer puerto
+# Exponer puerto (el que usa n8n)
 EXPOSE 5678
 
-# Healthcheck
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost:5678/healthz || exit 1
-
-# Comando de inicio
+# Iniciar n8n normalmente (sin workers, ni redis, ni queue mode)
 CMD ["n8n"]
